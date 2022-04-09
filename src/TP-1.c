@@ -65,13 +65,13 @@ En el menú deberán aparecer los valores actuales cargados en los vuelos de Latam
 #include <stdio.h>
 #include <stdlib.h>
 #include "unt.h"
+#include "calculos.h"
 
 int main(void)
 {
 	setbuf(stdout, NULL);
     int opcion;
-    int mostrar;
-//    float km;
+    float kms;
 	char salir = 'n';
 
     do
@@ -81,112 +81,18 @@ int main(void)
     		case 1:
 
     			break;
-    			/*case 2:
+			case 2:
     		    break;
-    		case 1:
+    		case 3:
 				break;
-    		case 1:
-				break;*/
+    		case 4:
+				break;
 
 		}
-    }while(salir != 's');
-    mostrar= get_IngrePrecio(opcion);
-   printf(mostrar);
+    }while(o != 's');
+
     return 0;
 }
 
-int mainMenu()
-{
-	int option;
-
-	printf("1- Ingresar kilometros: \n");
-	printf("2- ingresar precio de vuelos: \n");
-	printf("3- Calcular todos los costos: \n");
-	printf("4- Informar Resultados: \n");
-	printf("5- Carga forzada de datos: \n");
-	printf("6- finalizar \n");
-	printf("seleccione la opcion deseada: \n");
-	fflush(stdout);
-	scanf("%d", &option);
-
-	return option;
-}
-//3. Calcular todos los costos:
-
-//a) Tarjeta de débito (descuento 10%)
-float get_DebitCard(float precio)
-{
-	float preDebit;
-
-	preDebit= precio-((precio * 10)/ 100);
-	return preDebit;
-}
-//b) Tarjeta de crédito (interés 25%)
-float get_CreditCard(float precio)
-{
-	int precioCredito;
-	precioCredito= precio+((precio * 25)/100);
-	return precioCredito;
-}
-//c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)
-float get_PreBitcoin(float precio)
-{
-	float preBitcoin;
-	preBitcoin= precio / 4606954.55;
-	return preBitcoin;
-}
-//d) Mostrar precio por km (precio unitario)
-float get_precioKm(float precio, float km)
-{
-	float precioKm;
-	precioKm= precio / km;
-	return precioKm;
-}
-//e) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)
-float get_IngrePrecio(int ingreso)
-{
-	float precio;
-
-	if(ingreso == 1)
-	{
-		printf("Ingrese el precio de vuelo de Aerolíneas Argentinas:\n");
-		scanf("%f",&precio);
-	}
-	else
-	{
-		printf("Ingrese el precio de vuelo de Latam:\n");
-		scanf("%f",&precio);
-	}
-	return precio;
-}
-
-int get_Vuelos(float precioAA, float precioLA)
-{
-	int opcion;
-	printf("Ingrese el precio: Aerolineas Argentina %.2f || Latam %.2f ", precioAA, precioLA);
-	printf("A- Precio Aerolineas Argentinas\n");
-	printf("B- Precio Latam\n");
-	printf("Seleccione una opcion");
-	scanf("%d",&opcion);
-	return opcion;
-}
-
-float opcionKm(float km)
-{
-	int opcion;
-
-	if(km <= 0)
-	{
-		printf("Km invalido");
-		scanf("%d",&opcion);
-	}
-	else
-	{
-		printf("ajajajajajajaj");
-		scanf("%d",&opcion);
-	}
-
-	return opcion;
-}
 
 
