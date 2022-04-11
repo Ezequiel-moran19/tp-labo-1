@@ -5,18 +5,27 @@
  *      Author: moran
  */
 
-//3. Calcular todos los costos:
-
-//a) Tarjeta de débito (descuento 10%)
+//a)
+/**
+ *  \brief Calcula el precio pagando con Tarjeta de débito
+ *  \param Operacion para aplicar el descuento del 10%
+ *  \return El descuento aplicado
+ *
+*/
 float get_DebitCard(float precio)
 {
 	float preDebit;
-
 	preDebit= precio-((precio * 10)/ 100);
 	return preDebit;
 }
 
-//b) Tarjeta de crédito (interés 25%)
+//b)
+/**
+ *  \brief Calcula el precio pagando con Tarjeta de crédito
+ *  \param Operacion para aplicar el interes del 25%
+ *  \return El interes aplicado
+ *
+*/
 float get_CreditCard(float precio)
 {
 	int precioCredito;
@@ -24,7 +33,13 @@ float get_CreditCard(float precio)
 	return precioCredito;
 }
 
-//c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)
+//c)
+/**
+ *  \brief Calcula el precio del pago con Bitcon
+ *  \param realiza la operacion
+ *  \return El valor en Bitcon
+ *
+*/
 float get_PreBitcoin(float precio)
 {
 	float preBitcoin;
@@ -32,7 +47,13 @@ float get_PreBitcoin(float precio)
 	return preBitcoin;
 }
 
-//d) Mostrar precio por km (precio unitario)
+//d)
+/**
+ *  \brief Calcula el precio por kilimetro
+ *  \param realiza la operacion para saber el precio
+ *  \return El valor
+ *
+*/
 float get_precioKm(float precio, float km)
 {
 	float precioKm;
@@ -40,10 +61,15 @@ float get_precioKm(float precio, float km)
 	return precioKm;
 }
 //e) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)
+/**
+ *  \brief Permite el ingreso del precio
+ *  \param Pregunta si la opcion es valda
+ *  \return El precio y la opcion elegida
+ *
+*/
 float get_IngrePrecio(int ingreso)
 {
 	float precio;
-
 	if(ingreso == 1)
 	{
 		printf("Ingrese el precio de vuelo de Aerolíneas Argentinas:\n");
