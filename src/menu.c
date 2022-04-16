@@ -7,12 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
- /**
- *  \brief Menu de opciones
- *  \param Opciones disponibles dentro del menu
- *  \return la opcion elegida
- *
-*/
 int mainMenu()
 {
 	int opcion;
@@ -33,58 +27,72 @@ int mainMenu()
 
 	return opcion;
 }
-/**
- *  \brief Sub menu
- *  \param Opciones disponibles dentro del menu
- *  \return la opcion elegida
- *
-*/
-int get_Vuelos(float opcAA, float opcLA)
+
+int get_SubMenuVuelos(float opcAA, float opcLA)
 {
 	int opcion;
-	printf("Ingrese el precio: Aerolineas Argentina $%.2f || Latam $%.2f ", opcAA, opcLA);
-	printf("\n1- Precio Aerolineas Argentinas\n");
-	printf("\n2- Precio Latam\n");
-	printf("Seleccione una opcion: ");
+	printf("Ingrese el precio: Aerolineas Argentina $%.2f || Latam $%.2f:\n ", opcAA, opcLA);
+	printf("1- Precio Aerolineas Argentinas\n");
+	printf(" 2- Precio Latam\n");
+	printf("Elija la Aerolinea deseada: ");
 	scanf("%d",&opcion);
 	return opcion;
 }
-/**
- *  \brief Informar Resultados
- *  \param contiene el mensajes junto al valor
- *
-*/
+
 void get_Resultados(float kms, float precioAA, float precioLat, float debitAA, float creditAA, float btcAA, float uniAA, float debitLat, float creditLat,float btcLat, float uniLat, float diferencia)
 {
 	printf("\n");
-	printf("Kms Ingresados: %.2f\n",kms);
-	printf("Precio Aerolíneas: $%.2f\n", precioAA);
-	printf("a) Precio con tarjeta de débito: $%.2f\n", debitAA);
-	printf("b) Precio con tarjeta de crédito: $%.2f\n", creditAA);
-	printf("c) Precio pagando con bitcoin: %.5f\n",btcAA);
-	printf("d) Precio unitario: $%.2f\n", uniAA);
+	printf("KMs Ingresados: %.2f km\n",kms);
 	printf("\n");
-	printf("La diferencia de precio es: $%.2f\n", diferencia);
+	printf("Precio Aerolíneas: $ %.2f\n", precioAA);
+	printf("a) Precio con tarjeta de débito: $ %.2f\n", debitAA);
+	printf("b) Precio con tarjeta de crédito: $ %.2f\n", creditAA);
+	printf("c) Precio pagando con bitcoin: %.4f BTC\n",btcAA );
+	printf("d) Mostrar precio unitario: $ %.2f\n", uniAA);
 	printf("\n");
-	printf("Precio Latam: $%.2f\n",precioLat);
+	printf("Precio Latam: $ %.2f\n",precioLat);
+	printf("a) Precio con tarjeta de débito: $ %.2f\n", debitLat);
+	printf("b) Precio con tarjeta de crédito: $ %.2f\n", creditLat);
+	printf("c) Precio pagando con bitcoin: %.4f BTC\n", btcLat );
+	printf("d) Mostrar precio unitario:  $ %.2f\n", uniLat);
 	printf("\n");
-	printf("a) Precio con tarjeta de débito: $%.2f\n", debitLat);
-	printf("b) Precio con tarjeta de crédito: $%.2f\n", creditLat);
-	printf("c) Precio pagando con bitcoin: %.5f\n", btcLat);
-	printf("d) Precio unitario: $%.2f\n", uniLat);
+	printf("La diferencia de precio es: $ %.2f\n", diferencia);
+
 }
 
-float get_validation()
+float get_validationKm()
 {
 	float km;
-	int aux;
+	int cant;
 	printf("ingrese los kilometros del vuelo: \n");
-	aux= scanf("%f", &km);
-	while(km<=0 || aux==0){
+	cant= scanf("%f", &km);
+	while(km<=0 || cant==0){
 		fflush(stdout);
 		printf("ERROR! ingresar nuevamente los kilometros: \n");
 		scanf("%f", &km);
+		cant=km;
 	}
 	return km;
 }
 
+float get_validationPrecio(int ingreso)
+{
+	float precio;
+	if(ingreso == 1)
+	{
+		printf("Ingrese el precio de vuelo de Aerolíneas Argentinas: \n");
+		scanf("%f",&precio);
+	}
+	else
+	{
+		printf("Ingrese el precio de vuelo de Latam: \n");
+		scanf("%f",&precio);
+	}
+	while(precio < 1)
+	{
+		fflush(stdout);
+		printf("ERROR... Reingrese el precio: \n");
+		scanf("%f", &precio);
+	}
+	return precio;
+}

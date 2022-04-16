@@ -12,6 +12,5 @@ float get_DebitCard(float precio);
 float get_CreditCard(float precio);
 float get_PreBitcoin(float precio);
 float get_precioKm(float precio, float km);
-float get_IngrePrecio(int ingreso);
 
 #endif /* CALCULOS_H_ */
